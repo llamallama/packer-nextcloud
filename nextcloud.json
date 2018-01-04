@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "aws_profile": "chris"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "profile": "{{ user `aws_profile`}}",
+      "region": "us-east-1",
+      "source_ami": "ami-55ef662f",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ssh_keypair_name": "chris",
+      "ssh_agent_auth": true,
+      "ami_name": "nextcloud_1.0"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "configs",
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "execute_command": "sudo bash '{{ .Path }}'",
+      "script": "provision.sh"
+    }
+  ]
+}
