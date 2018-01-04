@@ -12,7 +12,7 @@
       "ssh_username": "ec2-user",
       "ssh_keypair_name": "chris",
       "ssh_agent_auth": true,
-      "ami_name": "nextcloud_1.0"
+      "ami_name": "nextcloud_1.2"
     }
   ],
   "provisioners": [

@@ -18,19 +18,11 @@ yum install -y httpd71 \
                php71-opcache \
                php71-apcu
 
-if [[ ! -d "${EFS_MOUNT_POINT}/nextcloud" ]]
-then
-  mkdir -p "${EFS_MOUNT_POINT}"/nextcloud/{data,apps2}
-  chown -R apache:apache "${EFS_MOUNT_POINT}/nextcloud"
-  chmod 770 "${EFS_MOUNT_POINT}"/nextcloud/data
-fi
-
 # Install nextcloud
 wget "${NEXTCLOUD_URL}" -O /nextcloud.tar.bz2
 tar -h -x -f /nextcloud.tar.bz2 -C /var/www/html/
 rm -f /nextcloud.tar.bz2
-mkdir /var/www/html/nextcloud/data/
-touch /var/www/html/nextcloud/data/.ocdata
+rsync -av /tmp/configs/nextcloud/ /var/www/html/nextcloud/
 ln -s "${EFS_MOUNT_POINT}"/nextcloud/apps2 /var/www/html/nextcloud/apps2
 
 # Set Permissions
