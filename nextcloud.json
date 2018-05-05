@@ -7,12 +7,12 @@
       "type": "amazon-ebs",
       "profile": "{{ user `aws_profile`}}",
       "region": "us-east-1",
-      "source_ami": "ami-55ef662f",
+      "source_ami": "ami-97785bed",
       "instance_type": "t2.micro",
       "ssh_username": "ec2-user",
       "ssh_keypair_name": "chris",
       "ssh_agent_auth": true,
-      "ami_name": "nextcloud_1.2"
+      "ami_name": "nextcloud_1.3"
     }
   ],
   "provisioners": [
